@@ -7,7 +7,6 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showMembershipForm, setShowMembershipForm] = useState(false);
 
-  // EmailJS form state
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -31,31 +30,29 @@ const Header = () => {
     { href: '#dining', label: 'Dining' },
     { href: '#events', label: 'Events' },
     { href: '#about', label: 'About' },
-    { href: '#gallery', label: 'gallery' }, 
+    { href: '#gallery', label: 'Gallery' },
     { href: '#contact', label: 'Contact' },
   ];
 
-  // Handle form input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle membership form submit
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitMessage(null);
 
-    const serviceID = 'service_adxay0g'; // replace with your actual service ID
-    const templateID = 'template_h5pw5r1'; // replace with your actual template ID
-    const userID = 'Gd-_NqcboMBihEZYZ'; // replace with your actual user ID (public key)
+    const serviceID = 'service_adxay0g';
+    const templateID = 'template_h5pw5r1';
+    const userID = 'Gd-_NqcboMBihEZYZ';
 
     emailjs.send(serviceID, templateID, formData, userID)
       .then(() => {
         setSubmitMessage('Thank you! Your membership request has been sent.');
         setFormData({ fullName: '', email: '', phone: '', message: '' });
         setIsSubmitting(false);
-        setShowMembershipForm(false); // close modal on success
+        setShowMembershipForm(false);
       })
       .catch(() => {
         setSubmitMessage('Failed to send your request. Please try again.');
@@ -87,9 +84,7 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <header className={`sticky top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-black/95 backdrop-blur-md shadow-lg' : 'bg-black'
-      }`}>
+      <header className={`sticky top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black/95 backdrop-blur-md shadow-lg' : 'bg-black'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center space-x-3">
@@ -130,7 +125,7 @@ const Header = () => {
 
             {/* Mobile menu button */}
             <button
-              className="lg:hidden text-black"
+              className="lg:hidden text-yellow-400"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -145,7 +140,7 @@ const Header = () => {
                   <a
                     key={item.href}
                     href={item.href}
-                    className="text-black hover:text-yellow-400 transition-colors duration-200 font-medium text-sm uppercase tracking-wide"
+                    className="text-white hover:text-yellow-400 transition-colors duration-200 font-medium text-sm uppercase tracking-wide"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
