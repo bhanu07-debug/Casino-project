@@ -6,11 +6,10 @@ const Footer = () => {
 
   const footerLinks = {
     casino: [
-      { 
-        name: 'Gaming Guide', 
-        href: '#', 
+      {
+        name: 'Gaming Guide',
+        href: '#',
         popup: [
-          "All guests must be at least 21 years old to enter gaming areas.",
           "A valid government-issued photo ID is required for age verification.",
           "Tiger Palace Casino promotes responsible gaming.",
           "Guests may voluntarily request self-exclusion or gaming limits.",
@@ -19,11 +18,11 @@ const Footer = () => {
           "Taxes may apply to certain winnings in accordance with government regulations."
         ]
       },
-      { 
-        name: 'House Rules', 
-        href: '#', 
+      {
+        name: 'House Rules',
+        href: '#',
         popup: [
-          "Found on the casino floor and website, detailing acceptable behavior and game regulations.", 
+          "Found on the casino floor and website, detailing acceptable behavior and game regulations.",
           "Include following age restrictions, respecting casino personnel, and adhering to dress codes.",
           "The premises are under 24/7 CCTV surveillance for guest safety and regulatory compliance.",
           "Casino chips have no cash value outside the casino.",
@@ -35,16 +34,15 @@ const Footer = () => {
           "Employees are trained to identify and report signs of problem gambling."
         ]
       },
-      { 
-        name: 'Responsible Gaming', 
-        href: '#', 
+      {
+        name: 'Responsible Gaming',
+        href: '#',
         popup: [
           "Tiger Palace Casino promotes responsible gaming and encourages guests to gamble within their means.",
           "Guests may voluntarily request self-exclusion or gaming limits.",
           "Casino staff is trained to identify and report signs of problem gambling.",
           "Guests may request assistance from casino staff if they feel they are experiencing problem gaming behaviors.",
           "The casino offers resources for guests struggling with problem gaming, including counseling services and support groups.",
-          
         ]
       },
       { name: 'VIP Program', href: '#' }
@@ -56,16 +54,16 @@ const Footer = () => {
     support: [
       { name: 'Contact Us', href: '#Contact' },
       { name: 'Careers', href: '/careers', target: '_blank' },
-      { 
-        name: 'Privacy Policy', 
-        href: '#', 
+      {
+        name: 'Privacy Policy',
+        href: '#',
         popup: [
           "Royal Tiger Recreation Pvt.Ltd values your patronage and respects your privacy. This Privacy Policy (“Policy”) describes the information collection, use, protection, and sharing practices of Royal Tiger Recreation Pvt.Ltd and its subsidiaries web sites, mobile applications, electronic communications, and properties described below. If you have any questions or concerns about this Policy, please contact us "
         ]
       },
-      { 
-        name: 'T&C', 
-        href: '#', 
+      {
+        name: 'Terms of Service',
+        href: '#',
         popup: [
           "All bookings made through the Call Centre and Website are non-refundable",
           "Rescheduling or cancellation is not allowed within 24 hours of the scheduled date of visit",
@@ -108,23 +106,15 @@ const Footer = () => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
               <div className="lg:col-span-4">
                 <div className="flex items-center space-x-3 mb-6">
-                  <img 
-                    src="/logo_for_red.png" 
-                    alt="Tiger Palace Casino" 
-                    className="h-15 w-auto"
-                  />
+                  <img src="/logo_for_red.png" alt="Tiger Palace Casino" className="h-15 w-auto" />
                 </div>
                 <p className="text-gray-300 mb-6 leading-relaxed">
-                  Experience the ultimate in luxury gaming, dining, and entertainment in the heart of Bhairahawa Strip. 
+                  Experience the ultimate in luxury gaming, dining, and entertainment in the heart of Bhairahawa Strip.
                   Where fortune meets elegance.
                 </p>
                 <div className="space-y-3 mb-6">
                   {quickContact.map((contact, index) => (
-                    <a
-                      key={index}
-                      href={contact.href}
-                      className="flex items-center text-gray-300 hover:text-yellow-400 transition-colors duration-200"
-                    >
+                    <a key={index} href={contact.href} className="flex items-center text-gray-300 hover:text-yellow-400 transition-colors duration-200">
                       <contact.icon className="h-4 w-4 mr-3 text-yellow-400" />
                       <span className="text-sm">{contact.text}</span>
                     </a>
@@ -177,35 +167,26 @@ const Footer = () => {
                     </ul>
                   </div>
 
-                 <div>
-  <h3 className="text-white font-black mb-6 uppercase tracking-wide text-sm">Casino Links</h3>
-  <ul className="space-y-3 mb-6">
-    {footerLinks.casino.map((link) => (
-      <li key={link.name}>
-        <a
-          href={link.href}
-          className="text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm cursor-pointer"
-          onClick={link.popup ? (e) => openPopup(link.popup, e) : undefined}
-        >
-          {link.name}
-        </a>
-      </li>
-    ))}
-  </ul>
-
-  {/* Logos under casino links */}
-  <div className="flex space-x-4">
-    <img src="bigdaddy.png" alt="License 1" className="h-14 w-auto" />
-    <img src="tiger.png" alt="License 2" className="h-14 w-auto" />
-    <img src="vegas.jpg" alt="Security Seal" className="h-14 w-auto" />
-  </div>
-</div>
-
+                  <div>
+                    <ul className="space-y-3">
+                      {footerLinks.support.map((link) => (
+                        <li key={link.name}>
+                          <a
+                            href={link.href}
+                            target={link.target || '_self'}
+                            className="text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm cursor-pointer"
+                            onClick={link.popup ? (e) => openPopup(link.popup, e) : undefined}
+                          >
+                            {link.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          
 
           <div className="border-t border-yellow-500/20 py-8">
             <div className="flex flex-col md:flex-row justify-between items-center">
@@ -224,7 +205,6 @@ const Footer = () => {
         </div>
       </footer>
 
-      {/* ✅ Popup Modal with bullet support */}
       {popupContent && (
         <div
           onClick={closePopup}
@@ -250,16 +230,11 @@ const Footer = () => {
               boxShadow: '0 0 15px rgba(0,0,0,0.3)'
             }}
           >
-            {Array.isArray(popupContent) ? (
-              <ul style={{ paddingLeft: '1.25rem', color: '#000', listStyleType: 'disc' }}>
-                {popupContent.map((item, index) => (
-                  <li key={index} style={{ marginBottom: '0.5rem' }}>{item}</li>
-                ))}
-              </ul>
-            ) : (
-              <p className="text-black">{popupContent}</p>
-            )}
-
+            <ul className="text-black list-disc pl-5 space-y-2">
+              {popupContent.map((point, index) => (
+                <li key={index}>{point}</li>
+              ))}
+            </ul>
             <button
               onClick={closePopup}
               style={{

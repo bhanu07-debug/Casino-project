@@ -162,7 +162,7 @@ const Hero: React.FC = () => {
             </button>
             <video
               className="w-full h-full rounded-lg"
-              src=""
+              src="event.mp4"
               autoPlay
               controls
             />

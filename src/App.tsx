@@ -24,7 +24,7 @@ function App() {
               <Gaming />
               <Dining />
               <Events />
-              <About /> khai k ho
+              <About /> 
               <Gallery />
               <Contact />
               <Footer />
