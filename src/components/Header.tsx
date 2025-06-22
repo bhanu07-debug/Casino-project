@@ -153,7 +153,7 @@ const Header = () => {
                   }}
                   className="bg-gradient-to-r from-yellow-600 to-yellow-500 hover:from-yellow-500 hover:to-yellow-400 text-black font-bold px-6 py-3 rounded-lg transition-all duration-300 text-sm uppercase tracking-wide mt-4"
                 >
-                  Join VIP Club
+                 Membership
                 </button>
               </nav>
             </div>

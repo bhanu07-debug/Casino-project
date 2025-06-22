@@ -2,9 +2,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Play, Star, Trophy, Users } from 'lucide-react';
 
 const mediaList = [
+  { type: 'video', url: 'tigerc.mp4' },
   { type: 'image', url: 'back1.jpg' },
   { type: 'image', url: 'table2.jpg' },
-  { type: 'image', url: 'table1.jpg' },
+  { type: 'image', url: 'table1.jpg' }, 
 ];
 
 const Hero: React.FC = () => {
