@@ -82,7 +82,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: Facebook, href: 'https://www.facebook.com/CasinoTigerPalace/', name: 'Facebook' },
     { icon: Instagram, href: 'https://www.instagram.com/tigerpalacecasino/', name: 'Instagram' },
-    { icon: Youtube, href: '#', name: 'YouTube' }
+    { icon: Youtube, href: 'https://www.youtube.com/@TigerPalaceCasino', name: 'YouTube' }
   ];
 
   const quickContact = [
