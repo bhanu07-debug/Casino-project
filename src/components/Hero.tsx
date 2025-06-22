@@ -4,8 +4,7 @@ import { Play, Star, Trophy, Users } from 'lucide-react';
 const mediaList = [
   { type: 'image', url: 'back1.jpg' },
   { type: 'image', url: 'table2.jpg' },
-  { type: 'image', url: 'table1.jpg' },
-  { type: 'video', url: 'event.mp4' },
+  { type: 'image', url: 'table1.jpg' }, // {type: 'video', url: 'event.mp4' /*}
 ];
 
 const Hero: React.FC = () => {
@@ -102,7 +101,7 @@ const Hero: React.FC = () => {
 
             <div className="grid grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-yellow-400 mb-1">1500+</div>
+                <div className="text-3xl font-bold text-yellow-400 mb-1">150+</div>
                 <div className="text-gray-400 text-sm uppercase tracking-wide">Slot Machines</div>
               </div>
               <div className="text-center">
@@ -162,7 +161,7 @@ const Hero: React.FC = () => {
             </button>
             <video
               className="w-full h-full rounded-lg"
-              src="event.mp4"
+              src="https://www.youtube.com/watch?v=oYGZvEXscyQ&ab_channel=InsideAsianGaming"
               autoPlay
               controls
             />

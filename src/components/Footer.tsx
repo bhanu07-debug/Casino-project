@@ -62,7 +62,7 @@ const Footer = () => {
         ]
       },
       {
-        name: 'Terms of Service',
+        name: 'Terms & Conditions',
         href: '#',
         popup: [
           "All bookings made through the Call Centre and Website are non-refundable",

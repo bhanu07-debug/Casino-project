@@ -25,7 +25,7 @@ const Gallery = () => {
             </span>
           </div>
           <h2 className="text-4xl lg:text-6xl font-black mb-6 text-white">
-            OUR
+            TIGER
             <span className="bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent block">
               GALLERY
             </span>

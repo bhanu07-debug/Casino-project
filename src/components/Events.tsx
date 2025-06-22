@@ -39,7 +39,6 @@ const Events: React.FC = () => {
 
   const upcomingEvents = [
     { date: 'Jun-20,21,22', title: 'Patte P Patta Carnival', time: '1:00 PM', status: 'Available', videoUrl: 'patte.mp4' },
-   { date: 'Jun 21', title: 'Sonali Raut Live Performance', time: '12:00 PM', status: 'Limited', videoUrl: '' },
     { date: 'August-15,16,17', title: 'Big Bash II', time: '12:00 PM', status: 'Limited', videoUrl: 'bigbash.mp4' },
   ];
 
