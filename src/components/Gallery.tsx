@@ -1,31 +1,78 @@
-import React from 'react';
-import { Image } from 'lucide-react';
+import React, { useState } from 'react';
+import { Image as ImageIcon, Video } from 'lucide-react';
 
 const Gallery = () => {
-  const images = [
-    'gala.jpg',
-    'gall2.JPG',
-    'gall3.JPG',
-    'gall4.jpg',
-    'gall5.JPG',
-    'gall6.JPG',
-    // Add more image paths as needed
+  const [activeType, setActiveType] = useState<'Images' | 'Videos'>('Images');
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [showAll, setShowAll] = useState(false);
+
+  const allImages = [
+      { src: 'gall4.jpg', category: 'Celebrity' },
+       { src: 'gala.jpg', category: 'Events' },
+          { src: '1.jpg', category: 'Celebrity' },
+          { src: '2.jpg', category: 'Celebrity' },
+          { src: '3.jpg', category: 'Celebrity' },
+          { src: '4.jpg', category: 'Celebrity' },
+          { src: '5.jpg', category: 'Celebrity' },
+          { src: '6.jpg', category: 'Celebrity' },
+          { src: '7.jpg', category: 'Celebrity' },
+          { src: '8.jpg', category: 'Celebrity' },
+          { src: '10.jpg', category: 'Celebrity' },
+          { src: '12.jpg', category: 'Celebrity' },
+          { src: '13.jpg', category: 'Celebrity' },
+          { src: '14.jpg', category: 'Celebrity' },
+          { src: 'sunnyl1.jpg', category: 'Celebrity' },
+          { src: 'sweta.jpg', category: 'Celebrity' },
+          { src: 'sweta1.jpg', category: 'Celebrity' },
+          { src: '14.jpg', category: 'Celebrity' },
+           { src: 'public/Event/KSL_0669.jpg', category: 'Events' },
+           { src: 'public/Event/KSL_0677.jpg', category: 'Events' },
+           { src: 'public/Event/PVA77149.jpg', category: 'Events' },
+           { src: 'public/Food/RSB00194.jpg', category: 'Food' },
+          { src: 'public/Games/KSL_0518.jpg', category: 'Games' },
+          { src: 'public/Games/PVA76874.jpg', category: 'Games' },
+           { src: 'public/Games/RSB00039.jpg', category: 'Games' },
+           { src: 'public/Games/RSB00041.jpg', category: 'Games' },
+           { src: 'public/Games/RSB00044.jpg', category: 'Games' },
+
   ];
+
+  const videos = [
+    { url: 'https://www.youtube.com/watch?v=QRmhnyWeVrc', title: 'Carnival Highlights' },
+    { url: 'https://www.youtube.com/watch?v=fIkMgyWzN2E', title: 'Big Bash Moments' },
+    { url: 'https://www.youtube.com/watch?v=VZgmUVdajU4', title: 'VIP Experience' },
+    // Add more video links here
+  ];
+
+  const categories = ['All', 'Events', 'Food', 'Games', 'Celebrity'];
+
+  const filteredImages =
+    activeCategory === 'All'
+      ? allImages
+      : allImages.filter((img) => img.category === activeCategory);
+
+  const imagesToShow = showAll ? filteredImages : filteredImages.slice(0, 4);
+  const videosToShow = showAll ? videos : videos.slice(0, 4);
+
+  const getYouTubeId = (url: string) => {
+    const match = url.match(/(?:\/|v=)([a-zA-Z0-9_-]{11})/);
+    return match ? match[1] : '';
+  };
 
   return (
     <section id="gallery" className="bg-black py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Header Styled Like Gaming */}
-        <div className="text-center mb-16">
+
+        {/* Header */}
+        <div className="text-center mb-12">
           <div className="inline-flex items-center bg-yellow-500/20 border border-yellow-500/30 rounded-full px-4 py-2 mb-6">
-            <Image className="h-4 w-4 text-yellow-400 mr-2" />
+            <ImageIcon className="h-4 w-4 text-yellow-400 mr-2" />
             <span className="text-yellow-400 text-sm font-medium uppercase tracking-wide">
               Moments Captured
             </span>
           </div>
-          <h2 className="text-4xl lg:text-6xl font-black mb-6 text-white">
-            TIGER
+          <h2 className="text-4xl lg:text-6xl font-black mb-4 text-white">
+            OUR
             <span className="bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent block">
               GALLERY
             </span>
@@ -35,18 +82,124 @@ const Gallery = () => {
           </p>
         </div>
 
-        {/* Image Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {images.map((src, index) => (
-            <div key={index} className="overflow-hidden rounded-xl border border-yellow-600">
-              <img
-                src={src}
-                alt={`Gallery ${index + 1}`}
-                className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-          ))}
+        {/* Type Tabs: Images / Videos */}
+        <div className="flex justify-center space-x-4 mb-6">
+          <button
+            className={`px-4 py-2 text-sm font-semibold rounded-full border transition-all duration-300 ${
+              activeType === 'Images'
+                ? 'bg-yellow-500 text-black border-yellow-500'
+                : 'text-yellow-400 border-yellow-500/30 hover:bg-yellow-500/10'
+            }`}
+            onClick={() => {
+              setActiveType('Images');
+              setShowAll(false);
+            }}
+          >
+            Images
+          </button>
+          <button
+            className={`px-4 py-2 text-sm font-semibold rounded-full border transition-all duration-300 ${
+              activeType === 'Videos'
+                ? 'bg-yellow-500 text-black border-yellow-500'
+                : 'text-yellow-400 border-yellow-500/30 hover:bg-yellow-500/10'
+            }`}
+            onClick={() => {
+              setActiveType('Videos');
+              setShowAll(false);
+            }}
+          >
+            Videos
+          </button>
         </div>
+
+        {/* Category Tabs (only if Images is active) */}
+        {activeType === 'Images' && (
+          <div className="flex justify-center space-x-4 mb-10 flex-wrap">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => {
+                  setActiveCategory(category);
+                  setShowAll(false);
+                }}
+                className={`px-4 py-2 text-sm font-semibold rounded-full border transition-all duration-300 ${
+                  activeCategory === category
+                    ? 'bg-yellow-500 text-black border-yellow-500'
+                    : 'text-yellow-400 border-yellow-500/30 hover:bg-yellow-500/10'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* Image Grid */}
+        {activeType === 'Images' && (
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+             {imagesToShow.map((image, index) => (
+  <div
+    key={index}
+    className="overflow-hidden rounded-xl border border-yellow-600 group transform transition duration-300 hover:scale-105"
+  >
+    <img
+      src={image.src}
+      alt={`Gallery ${index + 1}`}
+      className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+    />
+  </div>
+))}
+
+            </div>
+
+            {filteredImages.length === 0 && (
+              <div className="text-center text-gray-400 mt-10">No images in this category.</div>
+            )}
+          </>
+        )}
+
+        {/* Video Grid */}
+        {activeType === 'Videos' && (
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {videosToShow.map((video, index) => (
+                <div
+                  key={index}
+                  className="rounded-xl overflow-hidden border border-yellow-600 bg-black/50"
+                >
+                  <div className="aspect-w-16 aspect-h-9 w-full">
+                    <iframe
+                      src={`https://www.youtube.com/embed/${getYouTubeId(video.url)}`}
+                      allow="autoplay; encrypted-media"
+                      allowFullScreen
+                      className="w-full h-full"
+                      title={video.title}
+                    />
+                  </div>
+                  <div className="text-sm text-yellow-400 text-center py-2 bg-black/60 font-bold">{video.title}</div>
+                </div>
+              ))}
+            </div>
+
+            {videos.length === 0 && (
+              <div className="text-center text-gray-400 mt-10">No videos added yet.</div>
+            )}
+          </>
+        )}
+
+        {/* View All Button */}
+        {((activeType === 'Images' && filteredImages.length > 4) ||
+          (activeType === 'Videos' && videos.length > 4)) && (
+          <div className="text-center mt-10">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="px-6 py-2 text-sm font-bold rounded-full border border-yellow-500 text-yellow-400 hover:bg-yellow-500 hover:text-black transition-all duration-300"
+            >
+              {showAll ? 'Show Less' : 'View All'}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

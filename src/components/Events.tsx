@@ -4,6 +4,11 @@ import { Calendar, Music, Trophy, Star, Clock, X } from 'lucide-react';
 const Events: React.FC = () => {
   const [selectedVideo, setSelectedVideo] = React.useState<string | null>(null);
 
+  const getYouTubeId = (url: string) => {
+    const match = url.match(/(?:\/|v=)([a-zA-Z0-9_-]{11})/);
+    return match ? match[1] : '';
+  };
+
   const featuredEvents = [
     {
       icon: Music,
@@ -38,8 +43,8 @@ const Events: React.FC = () => {
   ];
 
   const upcomingEvents = [
-    { date: 'Jun-20,21,22', title: 'Patte P Patta Carnival', time: '1:00 PM', status: 'Available', videoUrl: 'patte.mp4' },
-    { date: 'August-15,16,17', title: 'Big Bash II', time: '12:00 PM', status: 'Limited', videoUrl: 'bigbash.mp4' },
+    { date: 'Jun-20,21,22', title: 'Patte P Patta Carnival', time: '1:00 PM', status: 'End', videoUrl: 'https://youtu.be/QRmhnyWeVrc' },
+    { date: 'August-15,16,17', title: 'Big Bash II', time: '12:00 PM', status: 'Available', videoUrl: 'https://youtu.be/fIkMgyWzN2E' },
   ];
 
   return (
@@ -103,9 +108,6 @@ const Events: React.FC = () => {
                   </div>
                 </div>
                 <p className="text-gray-300 leading-relaxed mb-6 text-sm">{event.description}</p>
-                {/*<button className="w-full bg-gradient-to-r from-yellow-600 to-yellow-500 hover:from-yellow-500 hover:to-yellow-400 text-black font-bold px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 uppercase tracking-wide text-sm">
-                  Book Now
-                </button>*/}
               </div>
             </div>
           ))}
@@ -127,7 +129,10 @@ const Events: React.FC = () => {
             {upcomingEvents.map((event, index) => (
               <div
                 key={index}
-                onClick={() => setSelectedVideo(event.videoUrl)}
+                onClick={() => {
+                  setSelectedVideo(event.videoUrl);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
                 className="cursor-pointer bg-black/40 rounded-xl p-4 border border-yellow-500/10 hover:border-yellow-500/30 transition-all duration-300 group"
               >
                 <div className="flex items-center justify-between mb-2">
@@ -153,31 +158,28 @@ const Events: React.FC = () => {
         </div>
       </div>
 
-      {/* Video Modal */}
+      {/* Video Modal with YouTube Embed */}
       {selectedVideo && (
-  <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center">
-    <div className="relative w-full max-w-3xl p-4">
-      {/* Ensure button is above everything */}
-      <button
-        className="absolute top-2 right-2 z-50 bg-black/60 rounded-full p-2 hover:bg-black/80 transition"
-        onClick={() => setSelectedVideo(null)}
-      >
-        <X className="w-6 h-6 text-white" />
-      </button>
-
-      {/* Wrap video to ensure it doesn't block the button */}
-      <div className="relative z-40">
-        <video
-          src={selectedVideo}
-          controls
-          autoPlay
-          className="w-full h-auto rounded-lg shadow-xl"
-        />
-      </div>
-    </div>
-  </div>
-)}
-
+        <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center">
+          <div className="relative w-full max-w-3xl p-4">
+            <button
+              className="absolute top-2 right-2 z-50 bg-black/60 rounded-full p-2 hover:bg-black/80 transition"
+              onClick={() => setSelectedVideo(null)}
+            >
+              <X className="w-6 h-6 text-white" />
+            </button>
+            <div className="relative z-40">
+              <iframe
+                src={`https://www.youtube.com/embed/${getYouTubeId(selectedVideo)}`}
+                frameBorder="0"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+                className="w-full h-[400px] md:h-[500px] rounded-lg shadow-xl"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

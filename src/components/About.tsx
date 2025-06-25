@@ -66,8 +66,8 @@ const About: React.FC = () => {
               className="rounded-2xl shadow-2xl w-full h-96 object-cover"
             />
             <div className="absolute -bottom-6 -right-6 bg-gradient-to-r from-yellow-600 to-yellow-500 text-black p-6 rounded-xl">
-              <div className="text-3xl font-black">50,000</div>
-              <div className="text-sm font-bold uppercase tracking-wide">SQ FT Gaming Floor</div>
+              <div className="text-3xl font-black">5000</div>
+              <div className="text-sm font-bold uppercase tracking-wide">SQ Mt Gaming Floor</div>
             </div>
           </div>
           
@@ -76,7 +76,7 @@ const About: React.FC = () => {
               <h3 className="text-3xl font-black text-white mb-4">THE ULTIMATE GAMING EXPERIENCE</h3>
               <p className="text-gray-300 text-lg leading-relaxed mb-6">
                 From the moment you enter our doors, you'll be immersed in an atmosphere of sophistication and excitement. 
-                Our 50,000 square foot gaming floor features the latest slot machines, classic table games, and exclusive 
+                Our 5,000 square foot gaming floor features the latest slot machines, classic table games, and exclusive 
                 high-limit areas designed for the discerning player.
               </p>
               <p className="text-gray-300 text-lg leading-relaxed">
