@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://www.royaltigerrecreation.com.np/</loc>
+    <priority>1.00</priority>
+  </url>
+
+  <!-- Anchor sections -->
+  <url>
+    <loc>https://www.royaltigerrecreation.com.np/#about</loc>
+  </url>
+  <url>
+    <loc>https://www.royaltigerrecreation.com.np/#games</loc>
+  </url>
+  <url>
+    <loc>https://www.royaltigerrecreation.com.np/#gallery</loc>
+  </url>
+  <url>
+    <loc>https://www.royaltigerrecreation.com.np/#events</loc>
+  </url>
+  <url>
+    <loc>https://www.royaltigerrecreation.com.np/#contact</loc>
+  </url>
+</urlset>
