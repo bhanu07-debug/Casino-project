@@ -7,41 +7,38 @@ const Gallery = () => {
   const [showAll, setShowAll] = useState(false);
 
   const allImages = [
-      { src: 'gall4.jpg', category: 'Celebrity' },
-       { src: 'gala.jpg', category: 'Events' },
-          { src: '1.jpg', category: 'Celebrity' },
-          { src: '2.jpg', category: 'Celebrity' },
-          { src: '3.jpg', category: 'Celebrity' },
-          { src: '4.jpg', category: 'Celebrity' },
-          { src: '5.jpg', category: 'Celebrity' },
-          { src: '6.jpg', category: 'Celebrity' },
-          { src: '7.jpg', category: 'Celebrity' },
-          { src: '8.jpg', category: 'Celebrity' },
-          { src: '10.jpg', category: 'Celebrity' },
-          { src: '12.jpg', category: 'Celebrity' },
-          { src: '13.jpg', category: 'Celebrity' },
-          { src: '14.jpg', category: 'Celebrity' },
-          { src: 'sunnyl1.jpg', category: 'Celebrity' },
-          { src: 'sweta.jpg', category: 'Celebrity' },
-          { src: 'sweta1.jpg', category: 'Celebrity' },
-          { src: '14.jpg', category: 'Celebrity' },
-           { src: 'KSL_0669.jpg', category: 'Events' },
-           { src: 'KSL_0677.jpg', category: 'Events' },
-           { src: 'PVA77149.jpg', category: 'Events' },
-           { src: 'RSB00194.jpg', category: 'Food' },
-          { src: 'KSL_0518.jpg', category: 'Games' },
-          { src: 'PVA76874.jpg', category: 'Games' },
-           { src: 'RSB00039.jpg', category: 'Games' },
-           { src: 'RSB00041.jpg', category: 'Games' },
-           { src: 'RSB00044.jpg', category: 'Games' },
-
+    { src: 'gall4.jpg', category: 'Celebrity' },
+    { src: 'gala.jpg', category: 'Events' },
+    { src: '1.jpg', category: 'Celebrity' },
+    { src: '2.jpg', category: 'Celebrity' },
+    { src: '3.jpg', category: 'Celebrity' },
+    { src: '4.jpg', category: 'Celebrity' },
+    { src: '5.jpg', category: 'Celebrity' },
+    { src: '6.jpg', category: 'Celebrity' },
+    { src: '7.jpg', category: 'Celebrity' },
+    { src: '8.jpg', category: 'Celebrity' },
+    { src: '10.jpg', category: 'Celebrity' },
+    { src: '12.jpg', category: 'Celebrity' },
+    { src: '13.jpg', category: 'Celebrity' },
+    { src: '14.jpg', category: 'Celebrity' },
+    { src: 'sunnyl1.jpg', category: 'Celebrity' },
+    { src: 'sweta.jpg', category: 'Celebrity' },
+    { src: 'sweta1.jpg', category: 'Celebrity' },
+    { src: 'KSL_0669.jpg', category: 'Events' },
+    { src: 'KSL_0677.jpg', category: 'Events' },
+    { src: 'PVA77149.jpg', category: 'Events' },
+    { src: 'RSB00194.jpg', category: 'Food' },
+    { src: 'KSL_0518.jpg', category: 'Games' },
+    { src: 'PVA76874.jpg', category: 'Games' },
+    { src: 'RSB00039.jpg', category: 'Games' },
+    { src: 'RSB00041.jpg', category: 'Games' },
+    { src: 'RSB00044.jpg', category: 'Games' },
   ];
 
   const videos = [
     { url: 'https://www.youtube.com/watch?v=QRmhnyWeVrc', title: 'Carnival Highlights' },
     { url: 'https://www.youtube.com/watch?v=fIkMgyWzN2E', title: 'Big Bash Moments' },
     { url: 'https://www.youtube.com/watch?v=VZgmUVdajU4', title: 'VIP Experience' },
-    // Add more video links here
   ];
 
   const categories = ['All', 'Events', 'Food', 'Games', 'Celebrity'];
@@ -62,8 +59,6 @@ const Gallery = () => {
   return (
     <section id="gallery" className="bg-black py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center bg-yellow-500/20 border border-yellow-500/30 rounded-full px-4 py-2 mb-6">
             <ImageIcon className="h-4 w-4 text-yellow-400 mr-2" />
@@ -82,7 +77,6 @@ const Gallery = () => {
           </p>
         </div>
 
-        {/* Type Tabs: Images / Videos */}
         <div className="flex justify-center space-x-4 mb-6">
           <button
             className={`px-4 py-2 text-sm font-semibold rounded-full border transition-all duration-300 ${
@@ -93,6 +87,7 @@ const Gallery = () => {
             onClick={() => {
               setActiveType('Images');
               setShowAll(false);
+              setActiveCategory('All');
             }}
           >
             Images
@@ -112,7 +107,6 @@ const Gallery = () => {
           </button>
         </div>
 
-        {/* Category Tabs (only if Images is active) */}
         {activeType === 'Images' && (
           <div className="flex justify-center space-x-4 mb-10 flex-wrap">
             {categories.map((category) => (
@@ -134,23 +128,22 @@ const Gallery = () => {
           </div>
         )}
 
-        {/* Image Grid */}
         {activeType === 'Images' && (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-             {imagesToShow.map((image, index) => (
-  <div
-    key={index}
-    className="overflow-hidden rounded-xl border border-yellow-600 group transform transition duration-300 hover:scale-105"
-  >
-    <img
-      src={image.src}
-      alt={`Gallery ${index + 1}`}
-      className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
-    />
-  </div>
-))}
-
+              {imagesToShow.map((image, index) => (
+                <div
+                  key={`${image.src}-${index}`}
+                  className="overflow-hidden rounded-xl border border-yellow-600 group transform transition duration-300 hover:scale-105"
+                >
+                  <img
+                    src={image.src}
+                    alt={`Gallery ${index + 1}`}
+                    loading="lazy"
+                    className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                </div>
+              ))}
             </div>
 
             {filteredImages.length === 0 && (
@@ -159,7 +152,6 @@ const Gallery = () => {
           </>
         )}
 
-        {/* Video Grid */}
         {activeType === 'Videos' && (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -175,9 +167,12 @@ const Gallery = () => {
                       allowFullScreen
                       className="w-full h-full"
                       title={video.title}
+                      loading="lazy"
                     />
                   </div>
-                  <div className="text-sm text-yellow-400 text-center py-2 bg-black/60 font-bold">{video.title}</div>
+                  <div className="text-sm text-yellow-400 text-center py-2 bg-black/60 font-bold">
+                    {video.title}
+                  </div>
                 </div>
               ))}
             </div>
@@ -188,7 +183,6 @@ const Gallery = () => {
           </>
         )}
 
-        {/* View All Button */}
         {((activeType === 'Images' && filteredImages.length > 4) ||
           (activeType === 'Videos' && videos.length > 4)) && (
           <div className="text-center mt-10">
