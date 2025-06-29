@@ -66,8 +66,8 @@ const About: React.FC = () => {
               className="rounded-2xl shadow-2xl w-full h-96 object-cover"
             />
             <div className="absolute -bottom-6 -right-6 bg-gradient-to-r from-yellow-600 to-yellow-500 text-black p-6 rounded-xl">
-              <div className="text-3xl font-black">5000</div>
-              <div className="text-sm font-bold uppercase tracking-wide">SQ Mt Gaming Floor</div>
+              <div className="text-3xl font-black">26,600</div>
+              <div className="text-sm font-bold uppercase tracking-wide">SQ ft Gaming Floor</div>
             </div>
           </div>
           

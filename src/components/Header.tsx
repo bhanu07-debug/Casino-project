@@ -192,6 +192,14 @@ const Header = () => {
                 required
               />
               <input
+                name="date"
+                 type="date"
+                 placeholder="Booking Date"
+                  className="w-full border p-2 rounded text-black"
+                    value={formData.date}
+                       onChange={handleChange}
+                                              />
+              <input
                 name="phone"
                 type="tel"
                 placeholder="Phone Number"
