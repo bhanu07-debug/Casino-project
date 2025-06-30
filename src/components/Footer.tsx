@@ -53,7 +53,7 @@ const Footer = () => {
     ],
     support: [
       { name: 'Contact Us', href: '#Contact' },
-      { name: 'Careers', href: '/careers', target: 'VacancyPage' },
+      { name: 'Careers', href: '/careers', target: '_blank' },
       {
         name: 'Privacy Policy',
         href: '#',
