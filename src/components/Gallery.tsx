@@ -1,5 +1,16 @@
 import React, { useState } from 'react';
 import { Image as ImageIcon, Video } from 'lucide-react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import {
+  EffectCoverflow,
+  Navigation,
+  Pagination,
+  Autoplay,
+} from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-coverflow';
 
 const Gallery = () => {
   const [activeType, setActiveType] = useState<'Images' | 'Videos'>('Images');
@@ -24,15 +35,16 @@ const Gallery = () => {
     { src: 'sunnyl1.jpg', category: 'Celebrity' },
     { src: 'sweta.jpg', category: 'Celebrity' },
     { src: 'sweta1.jpg', category: 'Celebrity' },
-    { src: 'KSL_0669.jpg', category: 'Events' },
-    { src: 'KSL_0677.jpg', category: 'Events' },
-    { src: 'PVA77149.jpg', category: 'Events' },
-    { src: 'RSB00194.jpg', category: 'Food' },
-    { src: 'KSL_0518.jpg', category: 'Games' },
-    { src: 'PVA76874.jpg', category: 'Games' },
-    { src: 'RSB00039.jpg', category: 'Games' },
-    { src: 'RSB00041.jpg', category: 'Games' },
-    { src: 'RSB00044.jpg', category: 'Games' },
+    { src: '14.jpg', category: 'Celebrity' },
+    { src: 'public/Event/KSL_0669.jpg', category: 'Events' },
+    { src: 'public/Event/KSL_0677.jpg', category: 'Events' },
+    { src: 'public/Event/PVA77149.jpg', category: 'Events' },
+    { src: 'public/Food/RSB00194.jpg', category: 'Food' },
+    { src: 'public/Games/KSL_0518.jpg', category: 'Games' },
+    { src: 'public/Games/PVA76874.jpg', category: 'Games' },
+    { src: 'public/Games/RSB00039.jpg', category: 'Games' },
+    { src: 'public/Games/RSB00041.jpg', category: 'Games' },
+    { src: 'public/Games/RSB00044.jpg', category: 'Games' },
   ];
 
   const videos = [
@@ -48,7 +60,7 @@ const Gallery = () => {
       ? allImages
       : allImages.filter((img) => img.category === activeCategory);
 
-  const imagesToShow = showAll ? filteredImages : filteredImages.slice(0, 4);
+  const imagesToShow = showAll ? filteredImages : filteredImages.slice(0, 12);
   const videosToShow = showAll ? videos : videos.slice(0, 4);
 
   const getYouTubeId = (url: string) => {
@@ -59,6 +71,7 @@ const Gallery = () => {
   return (
     <section id="gallery" className="bg-black py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center bg-yellow-500/20 border border-yellow-500/30 rounded-full px-4 py-2 mb-6">
             <ImageIcon className="h-4 w-4 text-yellow-400 mr-2" />
@@ -77,6 +90,7 @@ const Gallery = () => {
           </p>
         </div>
 
+        {/* Type Tabs */}
         <div className="flex justify-center space-x-4 mb-6">
           <button
             className={`px-4 py-2 text-sm font-semibold rounded-full border transition-all duration-300 ${
@@ -87,7 +101,6 @@ const Gallery = () => {
             onClick={() => {
               setActiveType('Images');
               setShowAll(false);
-              setActiveCategory('All');
             }}
           >
             Images
@@ -107,6 +120,7 @@ const Gallery = () => {
           </button>
         </div>
 
+        {/* Category Filter */}
         {activeType === 'Images' && (
           <div className="flex justify-center space-x-4 mb-10 flex-wrap">
             {categories.map((category) => (
@@ -128,30 +142,48 @@ const Gallery = () => {
           </div>
         )}
 
-        {activeType === 'Images' && (
-          <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {imagesToShow.map((image, index) => (
-                <div
-                  key={`${image.src}-${index}`}
-                  className="overflow-hidden rounded-xl border border-yellow-600 group transform transition duration-300 hover:scale-105"
-                >
-                  <img
-                    src={image.src}
-                    alt={`Gallery ${index + 1}`}
-                    loading="lazy"
-                    className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
-                  />
-                </div>
-              ))}
-            </div>
+        {/* Image Coverflow */}
+        {activeType === 'Images' && filteredImages.length > 0 && (
+         <Swiper
+  effect="coverflow"
+  grabCursor={true}
+  centeredSlides={true}
+  loop={true}
+  slidesPerView="auto"
+  autoplay={{ delay: 2500, disableOnInteraction: false }}
+  pagination={{ clickable: true }}
+  navigation={true}
+  coverflowEffect={{
+    rotate: 30,
+    stretch: 0,
+    depth: 100,
+    modifier: 1.5,
+    slideShadows: true,
+  }}
+  className="!pb-16"
+>
+  {imagesToShow.map((image, index) => (
+    <SwiperSlide
+      key={index}
+      style={{ width: '300px', height: '300px' }}
+      className="rounded-xl overflow-hidden border border-yellow-600"
+    >
+      <img
+        src={image.src}
+        alt={`Gallery ${index + 1}`}
+        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+      />
+    </SwiperSlide>
+  ))}
+</Swiper>
 
-            {filteredImages.length === 0 && (
-              <div className="text-center text-gray-400 mt-10">No images in this category.</div>
-            )}
-          </>
         )}
 
+        {activeType === 'Images' && filteredImages.length === 0 && (
+          <div className="text-center text-gray-400 mt-10">No images in this category.</div>
+        )}
+
+        {/* Video Grid */}
         {activeType === 'Videos' && (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -167,7 +199,6 @@ const Gallery = () => {
                       allowFullScreen
                       className="w-full h-full"
                       title={video.title}
-                      loading="lazy"
                     />
                   </div>
                   <div className="text-sm text-yellow-400 text-center py-2 bg-black/60 font-bold">
@@ -183,7 +214,8 @@ const Gallery = () => {
           </>
         )}
 
-        {((activeType === 'Images' && filteredImages.length > 4) ||
+        {/* View All Button 
+        {((activeType === 'Images' && filteredImages.length > 12) ||
           (activeType === 'Videos' && videos.length > 4)) && (
           <div className="text-center mt-10">
             <button
@@ -193,7 +225,7 @@ const Gallery = () => {
               {showAll ? 'Show Less' : 'View All'}
             </button>
           </div>
-        )}
+        )}*/}
       </div>
     </section>
   );

@@ -42,11 +42,32 @@ const Events: React.FC = () => {
     }
   ];
 
-  const upcomingEvents = [
-    { date: 'August', title: 'Dhamaka', time: '12:00 PM', status: 'Limited', videoUrl: '' },
-    { date: 'Jun-20,21,22', title: 'Patte P Patta Carnival', time: '1:00 PM', status: 'End', videoUrl: 'https://youtu.be/QRmhnyWeVrc' },
-    { date: 'August-15,16,17', title: 'Big Bash II', time: '12:00 PM', status: 'Available', videoUrl: 'https://youtu.be/fIkMgyWzN2E' },
-  ];
+ const upcomingEvents = [
+  {
+    date: 'August',
+    title: 'Dhamaka',
+    time: '12:00 PM',
+    status: 'Limited',
+    videoUrl: '',
+    image: 'dhamaka.jpg', // <-- add your image file
+  },
+  {
+    date: 'Jun-20,21,22',
+    title: 'Patte P Patta Carnival',
+    time: '1:00 PM',
+    status: 'End',
+    videoUrl: 'https://youtu.be/QRmhnyWeVrc',
+    image: 'carnival.jpg', // <-- add your image file
+  },
+  {
+    date: 'August-15,16,17',
+    title: 'Big Bash II',
+    time: '12:00 PM',
+    status: 'Available',
+    videoUrl: 'https://youtu.be/fIkMgyWzN2E',
+    image: 'bigbash.jpg', // <-- add your image file
+  },
+];
 
   return (
     <section id="events" className="py-20 bg-black">
