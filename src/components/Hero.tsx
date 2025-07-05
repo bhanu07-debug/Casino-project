@@ -7,19 +7,10 @@ const mediaList = [
   { type: 'image', url: 'table1.jpg' },
 ];
 
-const reels = [
-  '/reels/reel1.mp4',
-  '/reels/reel2.mp4',
-  '/reels/reel3.mp4',
-  '/reels/reel4.mp4',
-];
-
 const Hero: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [showTourVideo, setShowTourVideo] = useState(false);
-  const [showReel, setShowReel] = useState(false);
-  const [reelIndex, setReelIndex] = useState(0);
 
   const currentMedia = mediaList[currentIndex];
 
@@ -36,14 +27,6 @@ const Hero: React.FC = () => {
     setCurrentIndex((prev) => (prev + 1) % mediaList.length);
   };
 
-  const handleNextReel = () => {
-    setReelIndex((prev) => (prev + 1) % reels.length);
-  };
-
-  const handlePrevReel = () => {
-    setReelIndex((prev) => (prev - 1 + reels.length) % reels.length);
-  };
-
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
       <div className="absolute inset-0 z-0">
@@ -51,8 +34,8 @@ const Hero: React.FC = () => {
           <video
             key={currentMedia.url}
             className="w-full h-full object-cover"
-            muted
             autoPlay
+            muted
             playsInline
             onEnded={handleVideoEnd}
           >
@@ -98,6 +81,7 @@ const Hero: React.FC = () => {
               >
                 Start Playing Now
               </a>
+
               <button
                 onClick={() => setShowTourVideo(true)}
                 className="border-2 border-yellow-500 text-yellow-400 hover:bg-yellow-500 hover:text-black font-bold px-6 py-3 sm:px-8 sm:py-4 rounded-lg text-base sm:text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center uppercase tracking-wide"
@@ -105,8 +89,9 @@ const Hero: React.FC = () => {
                 <Play className="h-5 w-5 mr-2" />
                 Virtual Tour
               </button>
+
               <button
-                onClick={() => setShowReel(true)}
+                onClick={() => window.open('https://www.instagram.com/tigerpalacecasino?igsh=MXRpZnJjMGpzZHA4cA==', '_blank')}
                 className="border-2 border-yellow-500 text-yellow-400 hover:bg-yellow-500 hover:text-black font-bold px-6 py-3 sm:px-8 sm:py-4 rounded-lg text-base sm:text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center uppercase tracking-wide"
               >
                 <Video className="h-5 w-5 mr-2" />
@@ -179,33 +164,6 @@ const Hero: React.FC = () => {
               allow="autoplay; fullscreen"
               allowFullScreen
             ></iframe>
-          </div>
-        </div>
-      )}
-
-      {showReel && (
-        <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center px-4">
-          <div className="relative w-full max-w-xs aspect-[9/16]">
-            <button
-              onClick={() => setShowReel(false)}
-              className="absolute top-2 right-2 z-10 bg-black/70 hover:bg-red-600 text-white rounded-full p-2"
-              aria-label="Close"
-            >
-              ✕
-            </button>
-            <video
-              key={reelIndex}
-              src={reels[reelIndex]}
-              controls
-              autoPlay
-              muted
-              playsInline
-              className="w-full h-full rounded-lg object-cover"
-            />
-            <div className="absolute bottom-3 left-0 right-0 flex justify-between px-4">
-              <button onClick={handlePrevReel} className="text-white text-xl">⟨</button>
-              <button onClick={handleNextReel} className="text-white text-xl">⟩</button>
-            </div>
           </div>
         </div>
       )}
