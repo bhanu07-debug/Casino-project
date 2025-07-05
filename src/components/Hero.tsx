@@ -8,10 +8,10 @@ const mediaList = [
 ];
 
 const reels = [
-  'public/reels/reel1.mp4',
-  'public/reels/reel2.mp4',
-  'public/reels/reel3.mp4',
-  'public/reels/reel4.mp4',
+  '/reels/reel1.mp4',
+  '/reels/reel2.mp4',
+  '/reels/reel3.mp4',
+  '/reels/reel4.mp4',
 ];
 
 const Hero: React.FC = () => {
