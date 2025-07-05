@@ -8,14 +8,10 @@ const mediaList = [
 ];
 
 const reels = [
-  'reel3.mp4',
-  'reel4.mp4',
-  'reel5.mp4',
-  'reel6.mp4',
-  'reel7.mp4',
-  'reel8.mp4',
   'reel1.mp4',
   'reel2.mp4',
+  'public/WhatsApp Video 2025-07-04 at 11.27.49 AM.mp4',
+  'public/WhatsApp Video 2025-07-04 at 12.08.12 PM.mp4',
 ];
 
 const Hero: React.FC = () => {
@@ -55,6 +51,7 @@ const Hero: React.FC = () => {
           <video
             key={currentMedia.url}
             className="w-full h-full object-cover"
+            muted
             autoPlay
             playsInline
             onEnded={handleVideoEnd}
