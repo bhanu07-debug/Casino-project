@@ -8,10 +8,10 @@ const mediaList = [
 ];
 
 const reels = [
-  'reel1.mp4',
-  'reel2.mp4',
-  'public/WhatsApp Video 2025-07-04 at 11.27.49 AM.mp4',
-  'public/WhatsApp Video 2025-07-04 at 12.08.12 PM.mp4',
+  'public/reels/reel1.mp4',
+  'public/reels/reel2.mp4',
+  'public/reels/reel3.mp4',
+  'public/reels/reel4.mp4',
 ];
 
 const Hero: React.FC = () => {
