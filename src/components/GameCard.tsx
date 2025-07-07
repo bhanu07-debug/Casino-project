@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+{/*import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 type Props = {
@@ -40,7 +40,7 @@ const FlippingGameCard: React.FC<Props> = ({
         transition={{ type: 'spring', stiffness: 180, damping: 15 }}
         className="relative w-full h-full transform-style-preserve-3d duration-700"
       >
-        {/* Front face: Your original card content (image + content below) */}
+        {/* Front face: Your original card content (image + content below) 
         <div className="absolute w-full h-full backface-hidden rounded-2xl overflow-hidden shadow-lg bg-gray-900 text-white flex flex-col">
           <div className="relative h-40 overflow-hidden rounded-t-2xl">
             <img
@@ -48,9 +48,9 @@ const FlippingGameCard: React.FC<Props> = ({
               alt={title}
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
             />
-            {/* Optional gradient overlay */}
+            {/* Optional gradient overlay 
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-            {/* Icon on top-left */}
+            {/* Icon on top-left 
             <div className={`absolute top-4 left-4 bg-gradient-to-r ${color} p-3 rounded-xl shadow-yellow-400/30`}>
               <Icon className="h-8 w-8 text-black animate-pulse" />
             </div>
@@ -76,7 +76,7 @@ const FlippingGameCard: React.FC<Props> = ({
           </div>
         </div>
 
-        {/* Back face: Playing card image only */}
+        {/* Back face: Playing card image only 
         <div className="absolute w-full h-full backface-hidden rotate-y-180 rounded-2xl overflow-hidden shadow-lg">
           <img
             src={backImage}
@@ -90,4 +90,4 @@ const FlippingGameCard: React.FC<Props> = ({
   );
 };
 
-export default FlippingGameCard;
+export default FlippingGameCard;*/}
