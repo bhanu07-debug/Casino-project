@@ -10,8 +10,6 @@ import Dining from './components/Dining';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import VacancyPage from './components/VacancyPage';
-import PrivacyPolicy from './components/PrivacyPolicy';
-import Term from './components/term';
 
 function App() {
   return (
@@ -26,16 +24,14 @@ function App() {
               <Gaming />
               <Dining />
               <Events />
-              <About />
+              <About /> 
               <Gallery />
               <Contact />
               <Footer />
             </div>
           }
         />
-         <Route path="/PrivacyPolicy" element={<PrivacyPolicy/>} />
         <Route path="/careers" element={<VacancyPage />} />
-          <Route path="/term" element={<Term/>} />
       </Routes>
     </Router>
   );
