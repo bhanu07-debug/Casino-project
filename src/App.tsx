@@ -10,7 +10,7 @@ import Dining from './components/Dining';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import VacancyPage from './components/VacancyPage';
-import PrivacyPolicy from './components/privacypolicy';
+import PrivacyPolicy from './components/PrivacyPolicy';
 import Term from './components/term';
 
 function App() {
