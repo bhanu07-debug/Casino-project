@@ -3,10 +3,12 @@ import { Facebook, Instagram, Youtube, Mail, Phone, MapPin } from 'lucide-react'
 
 const Footer = () => {
   const [popupContent, setPopupContent] = useState(null);
+  const [popupTitle, setPopupTitle] = useState('');
 
   const footerLinks = {
     casino: [
       {
+        
         name: 'Gaming Guide',
         href: '#',
         popup: [
@@ -42,7 +44,7 @@ const Footer = () => {
           "Guests may voluntarily request self-exclusion or gaming limits.",
           "Casino staff is trained to identify and report signs of problem gambling.",
           "Guests may request assistance from casino staff if they feel they are experiencing problem gaming behaviors.",
-          "The casino offers resources for guests struggling with problem gaming, including counseling services and support groups.",
+          "The casino offers resources for guests struggling with problem gaming, including counseling services and support groups."
         ]
       },
       { name: 'VIP Program', href: '#' }
@@ -55,27 +57,16 @@ const Footer = () => {
       { name: 'Contact Us', href: '#Contact' },
       { name: 'Careers', href: '/careers', target: '_blank' },
       {
-        name: 'Privacy Policy',
-        href: '#',
-        popup: [
-          "Royal Tiger Recreation Pvt.Ltd values your patronage and respects your privacy. This Privacy Policy (“Policy”) describes the information collection, use, protection, and sharing practices of Royal Tiger Recreation Pvt.Ltd and its subsidiaries web sites, mobile applications, electronic communications, and properties described below. If you have any questions or concerns about this Policy, please contact us "
-        ]
-      },
-      {
-        name: 'Terms & Conditions',
-        href: '#',
-        popup: [
-          "All bookings made through the Call Centre and Website are non-refundable",
-          "Rescheduling or cancellation is not allowed within 24 hours of the scheduled date of visit",
-          "One-time date change is allowed to reschedule the visit for a future date with an applicable difference amount payable depending on the pricing at the time of revision. Request to be placed 24 hours ahead of the scheduled date of visit",
-          "If the pricing for the revised booking is of a lesser amount than your original booking, the remainder is not payable to Guest",
-          "Cancellation due to valid medical emergencies is subject to a full refund. However, the same will be addressed post verification of submitted documents",
-          "No cancellations/refunds are allowed for bookings made for blackout dates or at special rates",
-          "No cancellations/refunds or transfer of tickets in case of no show or unutilized bookings",
-          "Refunds shall be issued to the payment method used for the purchase of original tickets/packages. Once refund request is generated, the same will be processed within 10 working days",
-          "Management’s decision shall remain final."
-        ]
-      }
+  name: 'Privacy Policy',
+  href: '/PrivacyPolicy', // updated route
+  target: '_self'
+},
+{
+  name: 'Terms & Conditions',
+  href: '/Term',
+  target: '_self'
+}
+
     ]
   };
 
@@ -91,9 +82,10 @@ const Footer = () => {
     { icon: MapPin, text: 'Bhairahawa,Rupandehi,Lumbini,Nepal,32900', href: '#contact' }
   ];
 
-  const openPopup = (content, e) => {
+  const openPopup = (content, e, title = '') => {
     e.preventDefault();
     setPopupContent(content);
+    setPopupTitle(title);
   };
 
   const closePopup = () => setPopupContent(null);
@@ -146,7 +138,7 @@ const Footer = () => {
                           <a
                             href={link.href}
                             className="text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm cursor-pointer"
-                            onClick={link.popup ? (e) => openPopup(link.popup, e) : undefined}
+                            onClick={link.popup ? (e) => openPopup(link.popup, e, link.name) : undefined}
                           >
                             {link.name}
                           </a>
@@ -175,7 +167,7 @@ const Footer = () => {
                             href={link.href}
                             target={link.target || '_self'}
                             className="text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm cursor-pointer"
-                            onClick={link.popup ? (e) => openPopup(link.popup, e) : undefined}
+                            onClick={link.popup ? (e) => openPopup(link.popup, e, link.name) : undefined}
                           >
                             {link.name}
                           </a>
@@ -208,47 +200,26 @@ const Footer = () => {
       {popupContent && (
         <div
           onClick={closePopup}
-          style={{
-            position: 'fixed',
-            top: 0, left: 0, right: 0, bottom: 0,
-            backgroundColor: 'rgba(0,0,0,0.6)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            zIndex: 10000,
-          }}
+          className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center px-4"
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            style={{
-              backgroundColor: '#fff',
-              borderRadius: 8,
-              padding: 24,
-              maxWidth: '90%',
-              maxHeight: '80%',
-              overflowY: 'auto',
-              boxShadow: '0 0 15px rgba(0,0,0,0.3)'
-            }}
+            className="bg-white rounded-lg p-6 max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-xl relative"
           >
-            <ul className="text-black list-disc pl-5 space-y-2">
+            <h2 className="text-lg font-bold mb-4 text-center text-yellow-500 uppercase">{popupTitle}</h2>
+            <ul className="text-black list-disc pl-5 space-y-2 text-sm">
               {popupContent.map((point, index) => (
                 <li key={index}>{point}</li>
               ))}
             </ul>
-            <button
-              onClick={closePopup}
-              style={{
-                marginTop: 16,
-                padding: '8px 16px',
-                backgroundColor: '#fbbf24',
-                border: 'none',
-                borderRadius: 4,
-                cursor: 'pointer',
-                fontWeight: 'bold',
-              }}
-            >
-              Close
-            </button>
+            <div className="flex justify-center mt-6">
+              <button
+                onClick={closePopup}
+                className="bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-2 px-6 rounded-full transition duration-300"
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}
