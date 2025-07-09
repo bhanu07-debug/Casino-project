@@ -8,6 +8,7 @@ const Footer = () => {
   const footerLinks = {
     casino: [
       {
+        
         name: 'Gaming Guide',
         href: '#',
         popup: [
@@ -56,32 +57,16 @@ const Footer = () => {
       { name: 'Contact Us', href: '#Contact' },
       { name: 'Careers', href: '/careers', target: '_blank' },
       {
-        name: 'Privacy Policy',
-        href: '#',
-        popup: [
-          "Royal Tiger Recreation Pvt.Ltd values your patronage and respects your privacy. This Privacy Policy describes the information collection, use, protection, and sharing practices of Royal Tiger Recreation Pvt.Ltd.",
-          "We collect information you provide directly, such as name, contact, and booking details.",
-          "We use this data to provide services, improve our offerings, and ensure secure access.",
-          "We do not sell or rent your personal information to third parties.",
-          "Cookies and similar technologies may be used to analyze traffic and personalize content.",
-          "By using our services, you consent to this policy. Contact us for any privacy-related inquiries."
-        ]
-      },
-      {
-        name: 'Terms & Conditions',
-        href: '#',
-        popup: [
-          "All bookings made through the Call Centre and Website are non-refundable.",
-          "Rescheduling or cancellation is not allowed within 24 hours of the scheduled date of visit.",
-          "One-time date change is allowed to reschedule the visit for a future date with an applicable difference amount payable depending on the pricing at the time of revision.",
-          "If the pricing for the revised booking is of a lesser amount than your original booking, the remainder is not payable to Guest.",
-          "Cancellation due to valid medical emergencies is subject to a full refund. However, the same will be addressed post verification of submitted documents.",
-          "No cancellations/refunds are allowed for bookings made for blackout dates or at special rates.",
-          "No cancellations/refunds or transfer of tickets in case of no show or unutilized bookings.",
-          "Refunds shall be issued to the payment method used for the purchase of original tickets/packages. Once refund request is generated, the same will be processed within 10 working days.",
-          "By using our website and services, you agree to abide by these terms."
-        ]
-      }
+  name: 'Privacy Policy',
+  href: '/PrivacyPolicy', // updated route
+  target: '_self'
+},
+{
+  name: 'Terms & Conditions',
+  href: '/Term',
+  target: '_self'
+}
+
     ]
   };
 
